@@ -14,11 +14,14 @@ import Tfsa from '../../Tfsa/Tfsa'
 import Rrsp from '../../Rrsp/Rrsp'
 import { dismiss } from './Edit.actions'
 import classes from './Edit.module.scss'
+import { getSelected } from '../../../selectors/contributions'
+import { Status } from '../../../types/contribution'
 
 const ContributionEdit: React.FC = () => {
   const visible = useSelector<State, boolean>((state) =>
     isVisible(state, Dialogs.contributionEdit)
   )
+  const selected = useSelector(getSelected)
   const dispatch = useDispatch()
   const close = () => dispatch(dismiss())
 
@@ -33,8 +36,18 @@ const ContributionEdit: React.FC = () => {
               <Tfsa />
             </DialogContent>
             <DialogActions>
-              <Button onClick={close}>Cancel</Button>
-              <Button onClick={close}>Accept</Button>
+              <Button
+                disabled={selected?.status !== Status.Pending}
+                onClick={close}
+              >
+                Cancel
+              </Button>
+              <Button
+                disabled={selected?.status !== Status.Pending}
+                onClick={close}
+              >
+                Accept
+              </Button>
             </DialogActions>
           </Form>
         )}
