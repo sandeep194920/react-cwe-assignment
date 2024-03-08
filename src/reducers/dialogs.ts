@@ -23,7 +23,14 @@ const dialogs = (state: VisibleDialogs = defaultState, action: Action) => {
     case Actions.CONTRIBUTION_DELETE_CONFIRM:
       return {
         ...state,
+        [Dialogs.ContributionDeleteConfirm]: true,
+      }
+    case Actions.CONTRIBUTION_DELETE:
+      return {
+        ...state,
         [Dialogs.contributionDelete]: true,
+        [Dialogs.ContributionDeleteConfirm]: false,
+        [Dialogs.contributionEdit]: false,
       }
     default:
       return state

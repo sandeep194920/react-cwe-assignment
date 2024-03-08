@@ -17,7 +17,7 @@ import { getSelected } from '../../../../selectors/contributions'
 
 const ContributionDelete: React.FC = () => {
   const visible = useSelector<State, boolean>((state) =>
-    isVisible(state, Dialogs.contributionDelete)
+    isVisible(state, Dialogs.ContributionDeleteConfirm)
   )
   const selected = useSelector(getSelected)
   const dispatch = useDispatch()
@@ -26,7 +26,7 @@ const ContributionDelete: React.FC = () => {
   return (
     <Dialog open={!!visible} onClose={close}>
       <DialogTitle>
-        Are you sure you want to cancel this contribution?
+        Are you sure you want to delete this contribution?
       </DialogTitle>
       <Formik initialValues={{}} onSubmit={() => undefined}>
         {() => (
