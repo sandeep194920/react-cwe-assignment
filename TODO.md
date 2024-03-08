@@ -10,13 +10,15 @@
 
 - [x] Changed the `Cancel` button in the Edit section to `Delete`? This way, users will not get the impression that they are canceling the Edit modal. We can change it back to `Cancel` if my reasoning doesn't seem appropriate, so please feel free to suggest on this point.
 
+- [x] Deployed to AWS S3 + Cloudfront. Please access here [https://d1t5m28xcyh7ng.cloudfront.net/](https://d1t5m28xcyh7ng.cloudfront.net/)
+
 #### TBD
 
-- [x] Show RRSP and TFSA amount on any individual contribution.
-- [x] Show RRSP and TFSA amount on any edit & delete pages of individual contribution.
+- [ ] Show RRSP and TFSA amount on any individual contribution.
+- [ ] Show RRSP and TFSA amount on any edit & delete pages of individual contribution.
 
 #### Good to consider
 
-- [x] When the user tries to change the RRSP and TFSA amounts in the selected contribution, we can add certain validations. They can be as follows:
-  - [x] To check if they entered right numbers within the range.
-  - [x] To also check if the amount they entered for both RRSP and TFSA both exactly add up to their contribution.
+- [ ] When the user tries to change the RRSP and TFSA amounts in the selected contribution, we can add certain validations. They can be as follows:
+  - [ ] To check if they entered right numbers within the range.
+  - [ ] To also check if the amount they entered for both RRSP and TFSA both exactly add up to their contribution.
