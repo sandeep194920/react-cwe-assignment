@@ -6,7 +6,7 @@
 
 - [x] When a user clicks on a pending contribution and attempts to delete it, we display a delete confirmation message. If the user accepts the confirmation message, we proceed to delete it.
 
-- [x] Changed the `Cancel` button in the Edit section to `Delete`? This way, users will not get the impression that they are canceling the Edit modal.
+- [x] Changed the `Cancel` button in the Edit section to `Delete`? This way, users will not get the impression that they are canceling the Edit modal. We can change it back to `Cancel` if my reasoning doesn't seem appropriate, so please feel free to suggest on this point.
 
 #### TBD
 
