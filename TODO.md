@@ -1,12 +1,14 @@
 <!-- Please add further comments, questions, and improvements in this file -->
 
+[Please access the website here](https://d1t5m28xcyh7ng.cloudfront.net/) - Deployed to AWS S3 + Cloudfront
+
 #### Tasks Done
 
 - [x] When user clicks on any contribution other than the one having the 'Pending' status, the Accept and Cancel buttons will be disabled.
 
 - [x] When a user clicks on a pending contribution and attempts to delete it, we display a delete confirmation message. If the user accepts the confirmation message, we proceed to delete it.
 
-- [x] Changed the `Cancel` button in the Edit section to `Delete`? This way, users will not get the impression that they are canceling the Edit modal.
+- [x] Changed the `Cancel` button in the Edit section to `Delete`? This way, users will not get the impression that they are canceling the Edit modal. We can change it back to `Cancel` if my reasoning doesn't seem appropriate, so please feel free to suggest on this point.
 
 #### TBD
 
