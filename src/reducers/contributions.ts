@@ -1,13 +1,16 @@
 import { Action, Actions } from '../types/action'
 import { Contributions, Contribution, Status } from '../types/contribution'
 
-const initialState: Contributions = {}
+export const contributionsDefaultState: Contributions = {}
 
 const getContributionsList = (contributions: Contributions) => {
   return Object.values<Contribution>(contributions)
 }
 
-const contributions = (state: Contributions = initialState, action: Action) => {
+const contributions = (
+  state: Contributions = contributionsDefaultState,
+  action: Action
+) => {
   switch (action.type) {
     case Actions.CONTRIBUTION_DELETE:
       return getContributionsList(state).filter(

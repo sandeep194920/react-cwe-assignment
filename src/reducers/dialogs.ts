@@ -1,13 +1,16 @@
 import { Action, Actions } from '../types/action'
 import { VisibleDialogs, Dialogs } from '../types/dialog'
 
-const defaultState = {
+export const dialogsDefaultState = {
   [Dialogs.contributionEdit]: false,
   [Dialogs.contributionDelete]: false,
   [Dialogs.ContributionDeleteConfirm]: false,
 }
 
-const dialogs = (state: VisibleDialogs = defaultState, action: Action) => {
+const dialogs = (
+  state: VisibleDialogs = dialogsDefaultState,
+  action: Action
+) => {
   switch (action.type) {
     case Actions.APP_EDIT:
       return {

@@ -10,6 +10,8 @@ const selectedContribution = (
       return {
         ...action.contribution,
       }
+    case Actions.CONTRIBUTION_DELETE:
+      return null
     default:
       return state
   }

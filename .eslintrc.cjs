@@ -15,4 +15,7 @@ module.exports = {
       { allowConstantExport: true },
     ],
   },
+  globals: {
+    __DB_URL__: 'readonly',
+  },
 }
