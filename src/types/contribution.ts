@@ -4,27 +4,28 @@ export enum Status {
   Processed = 'PROCESSED',
 }
 
-export interface Contribution {
-  uuid: string;
-  status: Status,
-  total: number;
-  tfsa: number;
-  rrsp: number;
-  date: string;
-}
+// export type Status = 'PENDING' | 'CANCELLED' | 'PROCESSED'
 
+export interface Contribution {
+  uuid: string
+  status: Status
+  total?: number
+  tfsa: number
+  rrsp: number
+  date?: string
+}
 export interface WithContribution {
-  contribution: Contribution;
+  contribution: Contribution
 }
 
 export interface Contributions {
-  [uuid:string]: Contribution;
+  contributions: Contribution[]
 }
 
 export interface WithContributions {
-  contributions: Contributions;
+  contributions: Contribution[]
 }
 
 export interface WithSelectedContribution {
-  selectedContribution: Nullable<Contribution>;
+  selectedContribution: Nullable<Contribution>
 }

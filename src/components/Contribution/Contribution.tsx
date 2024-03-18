@@ -28,7 +28,7 @@ const Contribution: React.FC<Props> = ({ contribution }) => {
       <ListItemText
         primary={
           <Typography variant="body1">
-            {format(partISO(date), 'PPP')}
+            {date && format(partISO(date), 'PPP')}
           </Typography>
         }
         secondary={

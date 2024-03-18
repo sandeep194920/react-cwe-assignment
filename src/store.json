@@ -1,5 +1,10 @@
 {
-  "dialogs": {},
+  "dialogs": {
+    "contributionEdit": false,
+    "contributionDeleteConfirm": false,
+    "contributionDelete": false
+  },
+  "selectedContribution": null,
   "contributions": [
     {
       "uuid": "6ee2e1b4-ee06-4027-870b-607beb1d89e6",

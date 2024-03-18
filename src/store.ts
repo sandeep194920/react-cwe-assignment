@@ -1,63 +1,48 @@
 import addDays from 'date-fns/addDays'
 import subMonths from 'date-fns/subMonths'
 import { configureStore } from '@reduxjs/toolkit'
-
 import reducer from './reducers'
-// We don't need this ./store.json static data anymore as we are fetching data from backend API
-// import preloadedState from './store.json'
-import { Contribution, Contributions } from './types/contribution'
-import { dialogsDefaultState } from './reducers/dialogs'
-import { State } from './types/store'
+import preloadedState from './store.json'
+import { Contribution } from './types/contribution'
 import { VisibleDialogs } from './types/dialog'
 
-type InitialState = {
-  contributions: Contributions
-  dialogs: VisibleDialogs
-  selectedContribution: Nullable<string>
-}
-
-const transformState = (data: State, startDate: Date): InitialState => {
-  const { contributions, dialogs } = data
-  const transformedContributions = Object.values(contributions).reduce(
-    (
-      result: Contributions,
-      { uuid, status, tfsa, rrsp }: Contribution,
-      index: number
-    ) => ({
-      ...result,
-      [uuid]: {
-        uuid,
-        status,
-        tfsa,
-        rrsp,
-        total: tfsa + rrsp,
-        date: subMonths(startDate, index).toISOString(),
-      },
-    }),
-    {}
-  )
-
-  return {
+const transformState = (
+  {
+    contributions,
     dialogs,
+  }: { contributions: Contribution[]; dialogs: Partial<VisibleDialogs> },
+  startDate: Date
+) => {
+  console.log('The contributions', contributions)
+  return {
+    dialogs: dialogs ?? {},
     selectedContribution: null,
-    contributions: transformedContributions,
+    contributions: contributions.map(
+      (contribution: Contribution, index: number) => {
+        const { tfsa, rrsp } = contribution
+        contribution.total = tfsa + rrsp
+        contribution.date = subMonths(startDate, index).toISOString()
+        return contribution
+      }
+    ),
   }
 }
 
 export const createStore = async (startDate: Date) => {
+  console.log('The preloaddedState is', preloadedState)
   // Fetch contributions from the backend
   const contributions = await getContributions()
   console.log('The contributions are', contributions)
 
-  const data: State = {
-    contributions: contributions as Contributions,
-    dialogs: dialogsDefaultState,
-    selectedContribution: null,
-  }
-  console.log(data)
   return configureStore({
     reducer,
-    preloadedState: transformState(data, startDate) as any,
+    preloadedState: transformState(
+      {
+        contributions,
+        dialogs: {},
+      },
+      startDate
+    ) as any,
   })
 }
 
