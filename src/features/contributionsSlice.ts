@@ -14,6 +14,9 @@ const contributionsSlice = createSlice({
   name: 'contributions',
   initialState,
   reducers: {
+    setContributions(state, action: PayloadAction<Contribution[]>) {
+      state.value = action.payload
+    },
     contributionDelete(state, action: PayloadAction<Contribution>) {
       state.value = state.value.filter(
         (contribution) => contribution.uuid !== action.payload.uuid
@@ -22,5 +25,6 @@ const contributionsSlice = createSlice({
   },
 })
 
-export const { contributionDelete } = contributionsSlice.actions
+export const { setContributions, contributionDelete } =
+  contributionsSlice.actions
 export default contributionsSlice.reducer

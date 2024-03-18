@@ -2,35 +2,19 @@ import { configureStore } from '@reduxjs/toolkit'
 import selectedContributionReducer from './features/selectedContributionSlice'
 import dialogsReducer from './features/dialogsSlice'
 import contributionsReducer from './features/contributionsSlice'
-import { Status } from './types/contribution'
-import intialJsonState from './store.json'
-import subMonths from 'date-fns/subMonths'
-import addDays from 'date-fns/addDays'
-
-const transformState = (startDate: Date) => {
-  return {
-    dialogs: intialJsonState.dialogs,
-    selectedContribution: intialJsonState.selectedContribution,
-    contributions: {
-      value: intialJsonState.contributions.value.map((contribution, index) => {
-        return {
-          ...contribution,
-          status: contribution.status as Status,
-          total: contribution.tfsa + contribution.rrsp,
-          date: subMonths(startDate, index).toISOString(),
-        }
-      }),
-    },
-  }
-}
+import { contribututionsApi } from './features/async/contributions'
 
 export const store = configureStore({
   reducer: {
     selectedContribution: selectedContributionReducer,
     dialogs: dialogsReducer,
     contributions: contributionsReducer,
+    // for async
+    [contribututionsApi.reducerPath]: contribututionsApi.reducer,
   },
-  preloadedState: transformState(addDays(new Date(), 15)),
+  middleware: (getDefaultMiddleware) =>
+    // adding the api middleware enables caching, invalidation, polling and other features of `rtk-query`
+    getDefaultMiddleware().concat(contribututionsApi.middleware),
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
