@@ -4,8 +4,6 @@ export enum Status {
   Processed = 'PROCESSED',
 }
 
-// export type Status = 'PENDING' | 'CANCELLED' | 'PROCESSED'
-
 export interface Contribution {
   uuid: string
   status: Status

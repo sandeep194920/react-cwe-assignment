@@ -12,11 +12,14 @@ import { Dialogs } from '../../../types/dialog'
 import { State } from '../../../types/store'
 import Tfsa from '../../Tfsa/Tfsa'
 import Rrsp from '../../Rrsp/Rrsp'
-import { dismiss, confirmRemove } from './Edit.actions'
 import classes from './Edit.module.scss'
 import { getSelected } from '../../../selectors/contributions'
 import { Status } from '../../../types/contribution'
 import ContributionDelete from './Delete/Delete'
+import {
+  contributionDeleteConfirm,
+  contributionEditDismiss,
+} from '../../../features/dialogsSlice'
 
 const ContributionEdit: React.FC = () => {
   const visible = useSelector<State, boolean>((state) =>
@@ -24,7 +27,7 @@ const ContributionEdit: React.FC = () => {
   )
   const selected = useSelector(getSelected)
   const dispatch = useDispatch()
-  const close = () => dispatch(dismiss())
+  const close = () => dispatch(contributionEditDismiss())
 
   return (
     <Dialog open={!!visible} onClose={close}>
@@ -39,7 +42,7 @@ const ContributionEdit: React.FC = () => {
             <DialogActions>
               <Button
                 disabled={selected?.status !== Status.Pending}
-                onClick={() => dispatch(confirmRemove())}
+                onClick={() => dispatch(contributionDeleteConfirm())}
               >
                 Delete
               </Button>

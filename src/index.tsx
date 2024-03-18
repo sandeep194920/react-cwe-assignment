@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 
 import App from './App'
-import store from './store'
+import { store } from './reduxStore'
 import './index.scss'
 import { ThemeProvider } from '@mui/material'
 import theme from './theme'

@@ -1,7 +1,6 @@
 import List from '@mui/material/List'
 import React from 'react'
 import { useSelector } from 'react-redux'
-
 import { getList } from '../../selectors/contributions'
 import Contribution from '../Contribution/Contribution'
 

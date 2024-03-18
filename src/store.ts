@@ -2,7 +2,6 @@ import addDays from 'date-fns/addDays'
 import subMonths from 'date-fns/subMonths'
 import { configureStore } from '@reduxjs/toolkit'
 import reducer from './reducers'
-import preloadedState from './store.json'
 import { Contribution } from './types/contribution'
 import { VisibleDialogs } from './types/dialog'
 
@@ -13,7 +12,6 @@ const transformState = (
   }: { contributions: Contribution[]; dialogs: Partial<VisibleDialogs> },
   startDate: Date
 ) => {
-  console.log('The contributions', contributions)
   return {
     dialogs: dialogs ?? {},
     selectedContribution: null,
@@ -29,11 +27,8 @@ const transformState = (
 }
 
 export const createStore = async (startDate: Date) => {
-  console.log('The preloaddedState is', preloadedState)
   // Fetch contributions from the backend
   const contributions = await getContributions()
-  console.log('The contributions are', contributions)
-
   return configureStore({
     reducer,
     preloadedState: transformState(

@@ -11,9 +11,13 @@ import { Dialogs } from '../../../../types/dialog'
 import { State } from '../../../../types/store'
 import Tfsa from '../../../Tfsa/Tfsa'
 import Rrsp from '../../../Rrsp/Rrsp'
-import { dismiss, remove } from '.././Edit.actions'
 import classes from '../Edit.module.scss'
 import { getSelected } from '../../../../selectors/contributions'
+import { contributionEditDismiss } from '../../../../features/dialogsSlice'
+import { contributionDelete } from '../../../../features/contributionsSlice'
+import { contributionDeleteComplete } from '../../../../features/dialogsSlice'
+import { Contribution } from '../../../../types/contribution'
+import { contributionSelect } from '../../../../features/selectedContributionSlice'
 
 const ContributionDelete: React.FC = () => {
   const visible = useSelector<State, boolean>((state) =>
@@ -21,7 +25,13 @@ const ContributionDelete: React.FC = () => {
   )
   const selected = useSelector(getSelected)
   const dispatch = useDispatch()
-  const close = () => dispatch(dismiss())
+  const close = () => dispatch(contributionEditDismiss())
+
+  const handleDelete = (selected: Contribution) => {
+    dispatch(contributionDelete(selected))
+    dispatch(contributionDeleteComplete())
+    dispatch(contributionSelect(null))
+  }
 
   return (
     <Dialog open={!!visible} onClose={close}>
@@ -39,7 +49,7 @@ const ContributionDelete: React.FC = () => {
               <Button onClick={close}>Cancel</Button>
               <Button
                 disabled={!selected}
-                onClick={() => selected && dispatch(remove(selected))}
+                onClick={() => selected && handleDelete(selected)}
               >
                 Delete Contribution
               </Button>

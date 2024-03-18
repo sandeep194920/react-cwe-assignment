@@ -5,11 +5,10 @@ import CardContent from '@mui/material/CardContent'
 import CardHeader from '@mui/material/CardHeader'
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-
 import Contributions from './components/Contributions/Contributions'
 import ContributionEdit from './components/Contribution/Edit/Edit'
+import { appEdit } from './features/dialogsSlice'
 import { getSelected } from './selectors/contributions'
-import { edit } from './App.actions'
 
 const App: React.FC = () => {
   const selected = useSelector(getSelected)
@@ -23,7 +22,7 @@ const App: React.FC = () => {
           <Contributions />
         </CardContent>
         <CardActions>
-          <Button disabled={!selected} onClick={() => dispatch(edit())}>
+          <Button disabled={!selected} onClick={() => dispatch(appEdit())}>
             Edit
           </Button>
           <Button disabled={!selected}>Cancel</Button>
