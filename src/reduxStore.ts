@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
-import selectedContributionSlice from './features/selectedContributionSlice'
-import dialogsSlice from './features/dialogsSlice'
-import contributionsSlice from './features/contributionsSlice'
+import selectedContributionReducer from './features/selectedContributionSlice'
+import dialogsReducer from './features/dialogsSlice'
+import contributionsReducer from './features/contributionsSlice'
 import { Status } from './types/contribution'
 import intialJsonState from './store.json'
 import subMonths from 'date-fns/subMonths'
@@ -26,9 +26,9 @@ const transformState = (startDate: Date) => {
 
 export const store = configureStore({
   reducer: {
-    selectedContribution: selectedContributionSlice,
-    dialogs: dialogsSlice,
-    contributions: contributionsSlice,
+    selectedContribution: selectedContributionReducer,
+    dialogs: dialogsReducer,
+    contributions: contributionsReducer,
   },
   preloadedState: transformState(addDays(new Date(), 15)),
 })
