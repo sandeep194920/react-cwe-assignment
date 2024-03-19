@@ -17,12 +17,13 @@ const dialogsSlice = createSlice({
     contributionEditDismiss(state) {
       state[Dialogs.contributionEdit] = false
       state[Dialogs.contributionDelete] = false
+      state[Dialogs.ContributionDeleteConfirm] = false
     },
     contributionDeleteConfirm(state) {
       state[Dialogs.ContributionDeleteConfirm] = true
     },
     contributionDeleteComplete(state) {
-      state[Dialogs.contributionDelete] = true
+      state[Dialogs.contributionDelete] = false
       state[Dialogs.ContributionDeleteConfirm] = false
       state[Dialogs.contributionEdit] = false
     },

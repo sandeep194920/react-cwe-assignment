@@ -17,11 +17,6 @@ const contributionsSlice = createSlice({
     setContributions(state, action: PayloadAction<Contribution[]>) {
       state.value = action.payload
     },
-    // contributionDelete(state, action: PayloadAction<Contribution>) {
-    //   state.value = state.value.filter(
-    //     (contribution) => contribution.uuid !== action.payload.uuid
-    //   )
-    // },
   },
 })
 

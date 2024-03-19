@@ -17,23 +17,29 @@ import { contributionEditDismiss } from '../../../../features/dialogsSlice'
 import { contributionDeleteComplete } from '../../../../features/dialogsSlice'
 import { Contribution } from '../../../../types/contribution'
 import { contributionSelect } from '../../../../features/selectedContributionSlice'
-import { useDeleteContributionMutation } from '../../../../features/async/contributions'
+import {
+  useDeleteContributionMutation,
+  useGetAllContributionsQuery,
+} from '../../../../features/async/contributions'
 
 const ContributionDelete: React.FC = () => {
   const visible = useSelector<State, boolean>((state) =>
     isVisible(state, Dialogs.ContributionDeleteConfirm)
   )
   const [deleteContribution] = useDeleteContributionMutation()
+  const { refetch } = useGetAllContributionsQuery()
 
   const selected = useSelector(getSelected)
   const dispatch = useDispatch()
   const close = () => dispatch(contributionEditDismiss())
 
   const handleDelete = async (selected: Contribution) => {
-    // dispatch(contributionDelete(selected))
     await deleteContribution(selected)
+    // hiding the dialogs
     dispatch(contributionDeleteComplete())
     dispatch(contributionSelect(null))
+    // manually refetching the data after delete, as it would have changed the structure
+    refetch()
   }
 
   return (

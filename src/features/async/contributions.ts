@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { Contribution } from '../../types/contribution'
 
-// Define a service using a base URL and expected endpoints
+// API for async calls using Redux-Toolkit Query
 export const contribututionsApi = createApi({
   reducerPath: 'contribututionsApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8000/' }),
