@@ -9,7 +9,14 @@ export const contribututionsApi = createApi({
     getAllContributions: builder.query<Contribution[], void>({
       query: () => `contributions`,
     }),
+    deleteContribution: builder.mutation<void, Contribution>({
+      query: (contribution) => ({
+        url: `contribution/${contribution.uuid}`,
+        method: 'DELETE',
+      }),
+    }),
   }),
 })
 
-export const { useGetAllContributionsQuery } = contribututionsApi
+export const { useGetAllContributionsQuery, useDeleteContributionMutation } =
+  contribututionsApi

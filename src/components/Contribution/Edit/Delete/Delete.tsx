@@ -14,21 +14,24 @@ import Rrsp from '../../../Rrsp/Rrsp'
 import classes from '../Edit.module.scss'
 import { getSelected } from '../../../../selectors/contributions'
 import { contributionEditDismiss } from '../../../../features/dialogsSlice'
-import { contributionDelete } from '../../../../features/contributionsSlice'
 import { contributionDeleteComplete } from '../../../../features/dialogsSlice'
 import { Contribution } from '../../../../types/contribution'
 import { contributionSelect } from '../../../../features/selectedContributionSlice'
+import { useDeleteContributionMutation } from '../../../../features/async/contributions'
 
 const ContributionDelete: React.FC = () => {
   const visible = useSelector<State, boolean>((state) =>
     isVisible(state, Dialogs.ContributionDeleteConfirm)
   )
+  const [deleteContribution] = useDeleteContributionMutation()
+
   const selected = useSelector(getSelected)
   const dispatch = useDispatch()
   const close = () => dispatch(contributionEditDismiss())
 
-  const handleDelete = (selected: Contribution) => {
-    dispatch(contributionDelete(selected))
+  const handleDelete = async (selected: Contribution) => {
+    // dispatch(contributionDelete(selected))
+    await deleteContribution(selected)
     dispatch(contributionDeleteComplete())
     dispatch(contributionSelect(null))
   }
