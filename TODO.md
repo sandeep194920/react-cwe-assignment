@@ -19,7 +19,7 @@ _Later, I built a [backend using NodeJS, MongoDB, Express](https://github.com/sa
 
 - [x] Deployed the static website to AWS S3 + Cloudfront. Please access here [https://d1t5m28xcyh7ng.cloudfront.net/](https://d1t5m28xcyh7ng.cloudfront.net/) where we aren't making use of any backend.
 
-- [x] Deployed the dynamic site to [AWS Amplify](https://develop.dof4bajed850s.amplifyapp.com/), and AWS EBS where we are making use of Node, Express, MongoDB, [refer to this repo](https://github.com/sandeep194920/react-cwe-assignment-backend)
+- [x] Deployed the dynamic site to [AWS Amplify](https://develop.dof4bajed850s.amplifyapp.com/), and AWS EBS where we are making use of Node, Express, MongoDB, [refer to this repo](https://github.com/sandeep194920/react-cwe-assignment-backend). I've also used AWS Codepipeline CI/CD for this.
 
 - [x] In the dynamic site, I have fully modified the way redux was used. I have leveraged Redux toolkit Query (RTK Query) for async calls. Also, the data transformation is now done in backend and all the heavy lifting of data happens there.
 
