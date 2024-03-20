@@ -21,6 +21,8 @@ _Later, I built a [backend using NodeJS, MongoDB, Express](https://github.com/sa
 
 - [x] Deployed the dynamic site to [AWS Amplify](https://develop.dof4bajed850s.amplifyapp.com/), and AWS EBS where we are making use of Node, Express, MongoDB, [refer to this repo](https://github.com/sandeep194920/react-cwe-assignment-backend)
 
+- [x] In the dynamic site, I have fully modified the way redux was used. I have leveraged Redux toolkit Query (RTK Query) for async calls. Also, the data transformation is now done in backend and all the heavy lifting of data happens there.
+
 #### TBD
 
 - [ ] Show RRSP and TFSA amount on any individual contribution.
