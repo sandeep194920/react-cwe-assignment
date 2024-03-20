@@ -3,15 +3,13 @@ import { Provider } from 'react-redux'
 import { afterEach, expect, it } from 'vitest'
 
 import App from './App'
-import { createStore } from './store'
-
-const startDate = new Date(2020, 6, 3)
+import { store } from './reduxStore'
 
 afterEach(cleanup)
 
 it('renders with no issues', () => {
   const { container } = render(
-    <Provider store={createStore(startDate)}>
+    <Provider store={store}>
       <App />
     </Provider>
   )
@@ -21,7 +19,7 @@ it('renders with no issues', () => {
 
 it('opens a dialog when pending contribution is edited', async () => {
   render(
-    <Provider store={createStore(startDate)}>
+    <Provider store={store}>
       <App />
     </Provider>
   )
