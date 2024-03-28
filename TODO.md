@@ -2,7 +2,6 @@
 
 I have developed two versions of this site,
 
-- [Static website here](https://d1t5m28xcyh7ng.cloudfront.net/) - Deployed to AWS S3 + Cloudfront.
 - [Dynamic website here](https://develop.dof4bajed850s.amplifyapp.com/) - Frontend deployed to AWS Amplify and Backend deployed to AWS EBS, [refer to this backend repo](https://github.com/sandeep194920/react-cwe-assignment-backend)
 
 _I initially modified the redux code to make the functionality work (master branch of this repo)._
@@ -11,13 +10,13 @@ _Later, I built a [backend using NodeJS, MongoDB, Express](https://github.com/sa
 
 #### Tasks Done
 
+- [x] Modified redux for this project. Added redux toolkit's query features and also slice features to leverage best practices. Note that, in the develop branch, I'm no longer using `redux` folder, but instead making use of `features` folder for redux.
+
 - [x] When user clicks on any contribution other than the one having the 'Pending' status, the Accept and Cancel buttons will be disabled.
 
 - [x] When a user clicks on a pending contribution and attempts to delete it, we display a delete confirmation message. If the user accepts the confirmation message, we proceed to delete it.
 
 - [x] Changed the `Cancel` button in the Edit section to `Delete`? This way, users will not get the impression that they are canceling the Edit modal. We can change it back to `Cancel` if my reasoning doesn't seem appropriate, so please feel free to suggest on this point.
-
-- [x] Deployed the static website to AWS S3 + Cloudfront. Please access here [https://d1t5m28xcyh7ng.cloudfront.net/](https://d1t5m28xcyh7ng.cloudfront.net/) where we aren't making use of any backend.
 
 - [x] Deployed the dynamic site to [AWS Amplify](https://develop.dof4bajed850s.amplifyapp.com/), and AWS EBS where we are making use of Node, Express, MongoDB, [refer to this repo](https://github.com/sandeep194920/react-cwe-assignment-backend). I've also used AWS Codepipeline CI/CD for this.
 
